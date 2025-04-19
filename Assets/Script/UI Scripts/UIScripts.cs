@@ -17,7 +17,7 @@ public class UIScripts : MonoBehaviour
 
     public void Btn_Options()
     {
-        SceneManager.LoadScene("OptionsMainMenu");
+        SceneManager.LoadScene("MainOption");
     }
 
     public void Btn_BackMainMenu()
