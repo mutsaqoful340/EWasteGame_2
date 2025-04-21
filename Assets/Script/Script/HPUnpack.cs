@@ -1,11 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HPUnpack : MonoBehaviour
 {
-    public GameObject sdCardPrefab;  // Prefab SD Card
-    public GameObject ramPrefab;     // Prefab RAM
+    public GameObject sdCardPrefab;   // Prefab SD Card
+    public GameObject ramPrefab;      // Prefab RAM
+    public GameObject simCardPrefab;  // Prefab SIM Card ← DITAMBAH
 
-    // Fungsi untuk spawn SD Card atau RAM
+    // Fungsi untuk spawn SD Card, RAM, atau SIM Card
     public void SpawnItem(Vector3 spawnPos, string itemType)
     {
         GameObject spawnedItem = null;
@@ -19,8 +20,15 @@ public class HPUnpack : MonoBehaviour
         {
             spawnedItem = Instantiate(ramPrefab, spawnPos, Quaternion.identity);
         }
+        else if (itemType == "SIMCard") // ← DITAMBAH
+        {
+            spawnedItem = Instantiate(simCardPrefab, spawnPos, Quaternion.identity);
+        }
 
-        // Menambahkan tag item untuk mempermudah pengecekan lebih lanjut
-        spawnedItem.GetComponent<DraggableItem>().itemType = itemType;
+        // Tambahkan tag atau info item ke komponen
+        if (spawnedItem != null)
+        {
+            spawnedItem.GetComponent<DraggableItem>().itemType = itemType;
+        }
     }
 }
