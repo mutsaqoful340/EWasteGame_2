@@ -458,7 +458,6 @@ GameObject:
   - component: {fileID: 637074159}
   - component: {fileID: 637074158}
   - component: {fileID: 637074162}
-  - component: {fileID: 637074163}
   m_Layer: 0
   m_Name: Penyimpanan
   m_TagString: StorageZone
@@ -563,25 +562,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 637074157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 016f3a9081d3bd841820437bc281b238, type: 3}
+  m_Script: {fileID: 11500000, guid: a1d1569a154bd434f98518451cc48f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItems: 4
-  currentItemCount: 0
+  maxItems: 2
   winText: {fileID: 702670907}
---- !u!114 &637074163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637074157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2127417b57add3045826cd84d779984b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storageManager: {fileID: 0}
 --- !u!1 &702670905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,9 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016f3a9081d3bd841820437bc281b238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItems: 4
-  currentItemCount: 0
-  winText: {fileID: 702670907}
 --- !u!4 &1981349627
 Transform:
   m_ObjectHideFlags: 0
