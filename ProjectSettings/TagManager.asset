@@ -8,6 +8,7 @@ TagManager:
   - SmallEwaste
   - TrashZone
   - SDCard
+  - Barang
   layers:
   - Default
   - TransparentFX
