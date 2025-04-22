@@ -2,33 +2,50 @@
 
 public class HPUnpack : MonoBehaviour
 {
-    public GameObject sdCardPrefab;   // Prefab SD Card
-    public GameObject ramPrefab;      // Prefab RAM
-    public GameObject simCardPrefab;  // Prefab SIM Card ← DITAMBAH
+    public GameObject Top_EnclosurePrefab;     // Prefab Top Enclosure
+    public GameObject LCDPrefab;               // Prefab LCD
+    public GameObject MachinePrefab;           // Prefab Machine
+    public GameObject SIMCardPrefab;           // Prefab SIM Card
+    public GameObject batteryPrefab;           // Prefab Battery
+    public GameObject Bottom_EnclosurePrefab;  // Prefab Bottom Enclosure
 
-    // Fungsi untuk spawn SD Card, RAM, atau SIM Card
+    // Fungsi untuk spawn item berdasarkan tipe
     public void SpawnItem(Vector3 spawnPos, string itemType)
     {
         GameObject spawnedItem = null;
 
-        // Tentukan prefab berdasarkan item type
-        if (itemType == "SDCard")
+        switch (itemType)
         {
-            spawnedItem = Instantiate(sdCardPrefab, spawnPos, Quaternion.identity);
-        }
-        else if (itemType == "RAM")
-        {
-            spawnedItem = Instantiate(ramPrefab, spawnPos, Quaternion.identity);
-        }
-        else if (itemType == "SIMCard") // ← DITAMBAH
-        {
-            spawnedItem = Instantiate(simCardPrefab, spawnPos, Quaternion.identity);
+            case "Top_Enclosure":
+                spawnedItem = Instantiate(Top_EnclosurePrefab, spawnPos, Quaternion.identity);
+                break;
+            case "LCD":
+                spawnedItem = Instantiate(LCDPrefab, spawnPos, Quaternion.identity);
+                break;
+            case "Machine":
+                spawnedItem = Instantiate(MachinePrefab, spawnPos, Quaternion.identity);
+                break;
+            case "SIMCard":
+                spawnedItem = Instantiate(SIMCardPrefab, spawnPos, Quaternion.identity);
+                break;
+            case "battery":
+                spawnedItem = Instantiate(batteryPrefab, spawnPos, Quaternion.identity);
+                break;
+            case "Bottom_Enclosure":
+                spawnedItem = Instantiate(Bottom_EnclosurePrefab, spawnPos, Quaternion.identity);
+                break;
+            default:
+                Debug.LogWarning("Tipe item tidak dikenal: " + itemType);
+                break;
         }
 
-        // Tambahkan tag atau info item ke komponen
         if (spawnedItem != null)
         {
-            spawnedItem.GetComponent<DraggableItem>().itemType = itemType;
+            var dragComp = spawnedItem.GetComponent<DraggableItem>();
+            if (dragComp != null)
+            {
+                dragComp.itemType = itemType;
+            }
         }
     }
 }
