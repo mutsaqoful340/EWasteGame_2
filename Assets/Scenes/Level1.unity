@@ -897,7 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayTimer: {fileID: 1899073800}
-  maxItems: 2
+  maxItems: 4
   winPanel: {fileID: 396618493}
   winText: {fileID: 239115135}
   buttonsPanel: {fileID: 363454642}
@@ -1402,13 +1402,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13407265, y: 0, z: 0, w: 0.9909715}
-  m_LocalPosition: {x: 2.62, y: 6.3, z: -8.397}
+  m_LocalRotation: {x: 0.41731206, y: 0, z: 0, w: 0.9087633}
+  m_LocalPosition: {x: 1.98, y: 9.46, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 15.41, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 49.33, y: 0, z: 0}
 --- !u!1 &1193384742
 GameObject:
   m_ObjectHideFlags: 0

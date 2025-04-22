@@ -38,8 +38,11 @@ public class SpawnComponents : MonoBehaviour
                 Vector3 startPos = transform.position;
                 Vector3 targetPos = transform.position + offset;
 
-                // Spawn dulu di tengah (posisi HP), lalu gerakkan ke targetPos
-                GameObject obj = Instantiate(componentPrefabs[i], startPos, Quaternion.identity);
+                // Rotasi untuk membaringkan objek (misalnya 90 derajat di X)
+                Quaternion rotasiBaring = Quaternion.Euler(90f, 0f, 0f);
+
+                // Spawn dan rotasi sesuai orientasi baring
+                GameObject obj = Instantiate(componentPrefabs[i], startPos, rotasiBaring);
                 StartCoroutine(MoveToPosition(obj.transform, targetPos, moveDuration));
             }
         }
@@ -57,6 +60,6 @@ public class SpawnComponents : MonoBehaviour
             yield return null;
         }
 
-        obj.position = target; // pastikan posisi akhir pas
+        obj.position = target;
     }
 }
