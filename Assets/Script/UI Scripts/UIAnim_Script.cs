@@ -8,7 +8,7 @@ using UnityEngine;
 
         private void Awake()
         {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio_Manager>();
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio_Manager>(); //To awake the "AudioManager" game object when the game started.
 
         }
 
