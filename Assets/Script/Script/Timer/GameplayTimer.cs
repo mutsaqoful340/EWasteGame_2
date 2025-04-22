@@ -12,11 +12,13 @@ public class GameplayTimer : MonoBehaviour
     public TextMeshProUGUI upahText;  // Referensi ke TextMeshPro untuk upah
     public TextMeshProUGUI winText;   // Referensi ke TextMeshPro untuk pesan kemenangan
     public GameObject winPanel;       // Referensi ke panel kemenangan
+    public GameObject buttonsPanel;   // Referensi ke panel yang berisi tombol-tombol
 
     void Start()
     {
         waktuMulai = Time.time;  // Catat waktu mulai permainan
         winPanel.SetActive(false);  // Sembunyikan panel kemenangan di awal permainan
+        buttonsPanel.SetActive(false);  // Sembunyikan panel tombol di awal permainan
     }
 
     void Update()
@@ -79,7 +81,27 @@ public class GameplayTimer : MonoBehaviour
 
     IEnumerator TampilkanTombol()
     {
-        yield return new WaitForSeconds(2f);  // Tunggu sebentar
-        // Tombol atau panel lainnya bisa ditampilkan di sini
+        yield return new WaitForSeconds(1f);  // Tunggu sebentar sebelum menampilkan tombol
+        buttonsPanel.SetActive(true);  // Menampilkan panel tombol setelah 1 detik
+    }
+
+    // Fungsi untuk pindah ke level berikutnya
+    public void LanjutLevel()
+    {
+        int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("Tidak ada level selanjutnya.");
+        }
+    }
+
+    // Fungsi untuk mengulang level saat ini
+    public void UlangiLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
