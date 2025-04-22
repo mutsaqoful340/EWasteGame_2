@@ -1305,7 +1305,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1218990475}
         m_TargetAssemblyTypeName: VolumeSettings, Assembly-CSharp
-        m_MethodName: SetBGMVolume
+        m_MethodName: SetSFXVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2244,8 +2244,8 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 234816909}
-  - {fileID: 288608510}
   - {fileID: 650819499}
+  - {fileID: 288608510}
   - {fileID: 697831638}
   m_Father: {fileID: 1847561070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2369,6 +2369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myMixer: {fileID: 24100000, guid: 6dc5828094e021f41b897e3c41bec562, type: 2}
   musicSlider: {fileID: 288608511}
+  SFXSlider: {fileID: 0}
 --- !u!1 &1259194556
 GameObject:
   m_ObjectHideFlags: 0
