@@ -897,10 +897,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayTimer: {fileID: 1899073800}
-  maxItems: 2
-  winPanel: {fileID: 0}
-  winText: {fileID: 0}
-  buttonsPanel: {fileID: 0}
+  maxItems: 64
+  winPanel: {fileID: 396618493}
+  winText: {fileID: 1675129746}
+  buttonsPanel: {fileID: 363454642}
 --- !u!1 &684092785
 GameObject:
   m_ObjectHideFlags: 0

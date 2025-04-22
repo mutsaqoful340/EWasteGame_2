@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement; // Pindah ke atas
 
 public class GameplayTimer : MonoBehaviour
 {
@@ -8,17 +9,17 @@ public class GameplayTimer : MonoBehaviour
     private float waktuMulai;
     public bool permainanSelesai = false;
 
-    public TextMeshProUGUI timerText; // Referensi ke TextMeshPro untuk timer
-    public TextMeshProUGUI upahText;  // Referensi ke TextMeshPro untuk upah
-    public TextMeshProUGUI winText;   // Referensi ke TextMeshPro untuk pesan kemenangan
-    public GameObject winPanel;       // Referensi ke panel kemenangan
-    public GameObject buttonsPanel;   // Referensi ke panel yang berisi tombol-tombol
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI upahText;
+    public TextMeshProUGUI winText;
+    public GameObject winPanel;
+    public GameObject buttonsPanel;
 
     void Start()
     {
-        waktuMulai = Time.time;  // Catat waktu mulai permainan
-        winPanel.SetActive(false);  // Sembunyikan panel kemenangan di awal permainan
-        buttonsPanel.SetActive(false);  // Sembunyikan panel tombol di awal permainan
+        waktuMulai = Time.time;
+        winPanel.SetActive(false);
+        buttonsPanel.SetActive(false);
     }
 
     void Update()
@@ -26,19 +27,18 @@ public class GameplayTimer : MonoBehaviour
         if (!permainanSelesai)
         {
             waktuTersisa -= Time.deltaTime;
-            UpdateTimerUI();  // Update UI timer setiap frame
+            UpdateTimerUI();
 
             if (waktuTersisa <= 0f)
             {
                 waktuTersisa = 0f;
-                SelesaikanPermainan();  // Panggil selesai permainan jika waktu habis
+                SelesaikanPermainan();
             }
         }
     }
 
     void UpdateTimerUI()
     {
-        // Update text timer dengan format menit:detik
         float menit = Mathf.Floor(waktuTersisa / 60);
         float detik = Mathf.Floor(waktuTersisa % 60);
         timerText.text = string.Format("{0:00}:{1:00}", menit, detik);
@@ -46,52 +46,43 @@ public class GameplayTimer : MonoBehaviour
 
     public void SelesaikanPermainan()
     {
-        if (permainanSelesai) return;  // Pastikan hanya dijalankan sekali
+        if (permainanSelesai) return;
 
-        permainanSelesai = true;  // Tandai permainan selesai
+        permainanSelesai = true;
         Debug.Log("Permainan selesai");
 
-        // Hitung durasi permainan
         float durasiMain = Time.time - waktuMulai;
-        int upah = HitungUpah(durasiMain);  // Hitung upah berdasarkan durasi permainan
+        int upah = HitungUpah(durasiMain);
 
-        // Update UI dengan upah dan tampilkan panel kemenangan
         upahText.text = "Upah: Rp " + upah.ToString("N0");
         winText.text = "Anda Menang!";
-        winPanel.SetActive(true); // Menampilkan panel kemenangan
+        winPanel.SetActive(true);
 
         StartCoroutine(TampilkanTombol());
     }
 
     int HitungUpah(float durasi)
     {
-        if (durasi <= 60f)
-            return 25000;
-        else if (durasi <= 120f)
-            return 20000;
-        else if (durasi <= 180f)
-            return 15000;
-        else if (durasi <= 240f)
-            return 10000;
-        else if (durasi <= 300f)
-            return 5000;
-        else
-            return 0;
+        if (durasi <= 60f) return 25000;
+        else if (durasi <= 120f) return 20000;
+        else if (durasi <= 180f) return 15000;
+        else if (durasi <= 240f) return 10000;
+        else if (durasi <= 300f) return 5000;
+        else return 0;
     }
 
     IEnumerator TampilkanTombol()
     {
-        yield return new WaitForSeconds(1f);  // Tunggu sebentar sebelum menampilkan tombol
-        buttonsPanel.SetActive(true);  // Menampilkan panel tombol setelah 1 detik
+        yield return new WaitForSeconds(1f);
+        buttonsPanel.SetActive(true);
     }
 
-    // Fungsi untuk pindah ke level berikutnya
     public void LanjutLevel()
     {
-        int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
+            SceneManager.LoadScene(nextSceneIndex);
         }
         else
         {
@@ -99,9 +90,8 @@ public class GameplayTimer : MonoBehaviour
         }
     }
 
-    // Fungsi untuk mengulang level saat ini
     public void UlangiLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
