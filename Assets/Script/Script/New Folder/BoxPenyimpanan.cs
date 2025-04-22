@@ -1,22 +1,23 @@
 using UnityEngine;
-using TMPro;  
+using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BoxPenyimpanan : MonoBehaviour
 {
-    public int maxItems = 4; 
-    private int currentItems = 0; 
+    public int maxItems = 4;
+    private int currentItems = 0;
 
-    public TextMeshProUGUI winText; 
+    public GameObject winPanel; // panel yang muncul saat menang
+    public TextMeshProUGUI winText;
 
     void Start()
     {
-        winText.gameObject.SetActive(false);
+        winPanel.SetActive(false); // sembunyikan panel saat start
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other.CompareTag("Barang"))
         {
             currentItems++;
@@ -26,9 +27,35 @@ public class BoxPenyimpanan : MonoBehaviour
 
             if (currentItems >= maxItems)
             {
-                winText.gameObject.SetActive(true);
-                Debug.Log("Menang! Semua item sudah masuk.");
+                Menang();
             }
         }
+    }
+
+    void Menang()
+    {
+        winPanel.SetActive(true);
+        winText.text = "Menang!";
+        Debug.Log("Menang! Semua item sudah masuk.");
+    }
+
+    // Dipanggil oleh tombol "Lanjut Level"
+    public void LanjutLevel()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("Tidak ada level selanjutnya.");
+        }
+    }
+
+    // Dipanggil oleh tombol "Ulangi Level"
+    public void UlangiLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
