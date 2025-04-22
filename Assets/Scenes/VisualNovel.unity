@@ -913,7 +913,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 397450370}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1160345669}
+        m_TargetAssemblyTypeName: UIScripts, Assembly-CSharp
+        m_MethodName: Btn_BackMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &459027434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1896,7 +1908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba174fbe4795dc9428fc8c4b882dfec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUp: {fileID: 768136983}
+  popPCB: {fileID: 768136983}
+  popMenuButtons: {fileID: 1847561069}
 --- !u!1 &1189735821
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,7 +2069,7 @@ Transform:
   m_GameObject: {fileID: 1214650922}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -96.5, y: -12.4, z: 0}
+  m_LocalPosition: {x: -96.5, y: -20, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2477,6 +2490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1847561070}
+  - component: {fileID: 1847561071}
   m_Layer: 0
   m_Name: PopupMenu
   m_TagString: Untagged
@@ -2493,7 +2507,7 @@ Transform:
   m_GameObject: {fileID: 1847561069}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 83, y: -76, z: 0}
+  m_LocalPosition: {x: -798, y: -76, z: 0}
   m_LocalScale: {x: 1.3624, y: 1.3624, z: 1.3624}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2503,6 +2517,27 @@ Transform:
   - {fileID: 1214650923}
   m_Father: {fileID: 1065607559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1847561071
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847561069}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44529cb035ef1ef459ed098491dec051, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1950101591
 GameObject:
   m_ObjectHideFlags: 0
