@@ -1,19 +1,21 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class BoxPenyimpanan : MonoBehaviour
 {
     public int maxItems = 4;
     private int currentItems = 0;
 
-    public GameObject winPanel; // panel yang muncul saat menang
-    public TextMeshProUGUI winText;
+    public GameObject winPanel;  // Panel yang muncul setelah menang
+    public TextMeshProUGUI winText;  // Text untuk menampilkan "Menang!"
+    public GameObject buttonsPanel; // Panel yang berisi tombol-tombol (Lanjut Level, Ulangi Level)
 
     void Start()
     {
-        winPanel.SetActive(false); // sembunyikan panel saat start
+        // Menyembunyikan panel kemenangan dan tombol di awal permainan
+        winPanel.SetActive(false);
+        buttonsPanel.SetActive(false); // Pastikan tombol juga disembunyikan
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,25 +29,34 @@ public class BoxPenyimpanan : MonoBehaviour
 
             if (currentItems >= maxItems)
             {
-                Menang();
+                Menang();  // Panggil fungsi ketika semua item sudah masuk
             }
         }
     }
 
     void Menang()
     {
-        winPanel.SetActive(true);
-        winText.text = "Menang!";
+        winPanel.SetActive(true);  // Menampilkan panel kemenangan
+        winText.text = "Anda Menang!";  // Menampilkan teks "Anda Menang!"
+
         Debug.Log("Menang! Semua item sudah masuk.");
+        StartCoroutine(TampilkanTombol());  // Menunggu 5 detik sebelum menampilkan tombol
     }
 
-    // Dipanggil oleh tombol "Lanjut Level"
+    IEnumerator TampilkanTombol()
+    {
+        yield return new WaitForSeconds(5f); // Menunggu selama 5 detik
+
+        buttonsPanel.SetActive(true); // Menampilkan tombol setelah 5 detik
+    }
+
+    // Fungsi untuk pindah ke level berikutnya
     public void LanjutLevel()
     {
-        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
         {
-            SceneManager.LoadScene(nextSceneIndex);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
         }
         else
         {
@@ -53,9 +64,9 @@ public class BoxPenyimpanan : MonoBehaviour
         }
     }
 
-    // Dipanggil oleh tombol "Ulangi Level"
+    // Fungsi untuk mengulang level saat ini
     public void UlangiLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }
