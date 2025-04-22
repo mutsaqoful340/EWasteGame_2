@@ -9,6 +9,7 @@ TagManager:
   - TrashZone
   - SDCard
   - Barang
+  - Audio
   layers:
   - Default
   - TransparentFX
